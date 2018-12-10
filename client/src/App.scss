@@ -1,0 +1,92 @@
+// Size variable to keep all proportional if manipulate it
+
+$size: 200px;
+
+// Pokeball code
+.o-pokeball {
+  width: $size;
+  height: $size;
+  border-radius: $size;
+  border: solid ($size/25) black;
+  position: relative;
+  background: linear-gradient(to bottom, #EEEEEE 0%,#FFFFFF 100%);;
+  margin: 5rem auto 0;
+  cursor: pointer;
+
+  &:before,
+  &:after{
+    content: "";
+    display: block;
+  }
+
+  &,
+  &:before,
+  &:after{
+    transition: all 600ms cubic-bezier(.67,.4,.36,.75);
+  }
+
+  &:before {
+    height: ($size/2) -($size/25/2);
+    border-bottom: solid ($size/25) black;
+    border-radius: ($size/2) ($size/2) 0 0;
+    background: linear-gradient(to bottom, #d10000 0%,#ff0000 50%);
+  }
+
+  &:after {
+    width: $size/5;
+    height: $size/5;
+    background: linear-gradient(to bottom, #fff 0%,#ccc 100%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 ($size/50) black,
+                0 0 0 ($size/25) #ddd,
+                0 0 0 ($size/14) black,
+                0 0 ($size/10) ($size/17) rgba(0,0,0,0.4);
+  }
+
+  &:hover {
+    transform: rotate(360deg);
+    &:after {
+      box-shadow: 0 0 0 ($size/40) black,
+                0 0 0 ($size/22) #ddd,
+                0 0 0 ($size/12) black,
+                0 0 ($size/10) ($size/17) rgba(0,0,0,0.4);
+    }
+  }
+}
+
+
+.shadow {
+  transition: transform .5s;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 2s cubic-bezier(.165, .84, .44, 1);
+    box-shadow: 0 8px 27px 0 rgb(44, 117, 255);
+    content: '';
+    opacity: 0;
+    z-index: -1;
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale3d(1.006, 1.006, 1);
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+
+.imgPrev{
+  background: url(pokeball.png) no-repeat center;
+  background-size: 290px auto;
+}
